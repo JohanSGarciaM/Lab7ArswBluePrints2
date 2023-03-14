@@ -10,24 +10,23 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import edu.eci.arsw.blueprints.model.Blueprint;
+import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
+import edu.eci.arsw.blueprints.services.BlueprintsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-import edu.eci.arsw.blueprints.services.BlueprintsServices;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
  * @author hcadavid
  */
-
 @RestController
 @RequestMapping(value = "/blueprints")
 public class BlueprintAPIController {
-	@Autowired
+
+    @Autowired
     BlueprintsServices bs;
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> getBlueprints(){
@@ -40,4 +39,3 @@ public class BlueprintAPIController {
         }
     }
 }
-

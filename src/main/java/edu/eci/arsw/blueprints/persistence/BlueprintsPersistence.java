@@ -47,4 +47,12 @@ public interface BlueprintsPersistence {
      */
     
     public HashSet<Blueprint> getBlueprints() throws BlueprintNotFoundException;
+
+    /**
+     * 
+     * @param name of the blueprint
+     * @param author 
+     * @return 
+     */
+	
 }
