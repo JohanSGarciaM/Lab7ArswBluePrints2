@@ -74,4 +74,13 @@ public class BlueprintsServices {
         }
 
     }
+
+	public void updateBlueprint(String bpname, String author, Blueprint blueprint) throws BlueprintNotFoundException {
+		try {
+			bpp.updateBlueprint(bpname,author,blueprint);
+		}catch(BlueprintNotFoundException e) {
+			throw new BlueprintNotFoundException(e.getMessage());
+		}
+		
+	}
 }

@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 
-    private final Map<Tuple<String,String>,Blueprint> blueprints=new HashMap<>();
+    private final Map<Tuple<String,String>,Blueprint> blueprints=new ConcurrentHashMap<>();
 
     public InMemoryBlueprintPersistence() {
         //load stub data
@@ -33,18 +34,23 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     	//First Blueprint with "_authorname_" 
     	
         Point[] pts1=new Point[]{new Point(140, 140),new Point(115, 115)};
-        Blueprint bp1=new Blueprint("_authorname_", "_bpname_ ",pts1);
+        Blueprint bp1=new Blueprint("_authorname_", "first",pts1);
         blueprints.put(new Tuple<>(bp1.getAuthor(),bp1.getName()), bp1);
         
         //Second Blueprint with "_authorname_" same as first one
         Point[] pts2=new Point[]{new Point(150, 150),new Point(110, 120)};
-        Blueprint bp2=new Blueprint("_authorname_", "_bpname_ ",pts2);
+        Blueprint bp2=new Blueprint("_authorname_", "first",pts2);
         blueprints.put(new Tuple<>(bp2.getAuthor(),bp2.getName()), bp2);
         
         //Third Blueprint with diferent authorname: "_dauthorname_"
         Point[] pts3=new Point[]{new Point(130, 130),new Point(120, 110)};
-        Blueprint bp3=new Blueprint("_dauthorname_", "_bpname_ ",pts3);
+        Blueprint bp3=new Blueprint("_dauthorname_", "third",pts3);
         blueprints.put(new Tuple<>(bp3.getAuthor(),bp3.getName()), bp3);
+        
+      //Fourth Blueprint with diferent authorname: "_difauthorname_"
+        Point[] pts4=new Point[]{new Point(130, 130),new Point(120, 110)};
+        Blueprint bp4=new Blueprint("_difauthorname_", "third",pts4);
+        blueprints.put(new Tuple<>(bp4.getAuthor(),bp4.getName()), bp4);
     }    
     
     @Override
@@ -84,6 +90,24 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     public HashSet<Blueprint> getBlueprints(){
     	return new HashSet<Blueprint>(blueprints.values());
     }
+
+	@Override
+	public void updateBlueprint(String bpname, String author, Blueprint blueprint) throws BlueprintNotFoundException {
+		Set<Blueprint> blueprintSet = new HashSet<>();
+		for(Map.Entry<Tuple<String, String>, Blueprint> entry : blueprints.entrySet()) {
+			if(entry.getValue().getName().equals(bpname)) {
+				blueprintSet.add(entry.getValue());
+			}
+		}
+		if(blueprintSet.size()>0) {
+			Tuple<String, String> key = new Tuple<>(author, bpname);
+			blueprints.put(key, blueprint);	
+		}else {
+			throw new BlueprintNotFoundException("Blueprint Does not exist");
+		}
+		
+		
+	}
     
     
 }

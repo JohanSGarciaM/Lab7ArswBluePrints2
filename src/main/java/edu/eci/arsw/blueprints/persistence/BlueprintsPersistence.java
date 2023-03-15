@@ -50,9 +50,14 @@ public interface BlueprintsPersistence {
 
     /**
      * 
-     * @param name of the blueprint
-     * @param author 
-     * @return 
+     * @param bpname name of blueprint
+     * @param author blueprint's author
+     * @param blueprint to be update
      */
+    
+    
+	public void updateBlueprint(String bpname, String author, Blueprint blueprint) throws BlueprintNotFoundException;
+
+    
 	
 }

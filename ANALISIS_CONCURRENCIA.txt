@@ -1,0 +1,8 @@
+Debido a que no se valida la implementación de una colección Thread-safe dentro del análisis de concurrencia de la aplicación entonces
+lac condición carrera se puede presentar al momento de realizar request desde el servicio de tipo GET y POST teniendo en cuenta
+que la finalidad de estos es obtener información de la aplicación y modificarla respectivamente por lo que la solución es 
+utilizar una colección thread-safe que sea segura para subprocesos, como lo pueden ser , BlockingCollection<T>,
+ConcurrentDictionary<TKey,TValue>, ConcurrentQueue<T>, ConcurrentStack<T>, ConcurrentBag<T>, ConcurrentHashMap<T>, por lo que para la solución
+que se plantea se decide ocurrir a la colección concurrentHashMap<> la cual es parte del paquete java.util.concurrent y es una
+alternativa escalable a la clase HashMap tradicional lo que significa que varios subprocesos pueden acceder a él simultáneamente sin ningun
+problema de sincronización.
