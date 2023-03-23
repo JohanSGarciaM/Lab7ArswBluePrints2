@@ -50,3 +50,14 @@ form{
     border-style:groove;
     
 }
+
+
+#myCanvas{
+    background-color: violet;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+ 

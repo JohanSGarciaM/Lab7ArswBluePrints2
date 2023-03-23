@@ -11,7 +11,8 @@ apimock=(function(){
 	mockdata["johan"]= [{author:"johan","points":[{"x":150,"y":120},{"x":215,"y":115}],"name":"house3"},
 	{author:"johan","points":[{"x":340,"y":240},{"x":15,"y":215}],"name":"gear3"}];
 	mockdata["sebastian"]= [{author:"sebastian","points":[{"x":130,"y":110},{"x":123,"y":125}],"name":"house4"},
-	{author:"johan","points":[{"x":320,"y":140},{"x":152,"y":210}],"name":"gear4"}];
+	{author:"sebastian","points":[{"x":320,"y":140},{"x":152,"y":210}],"name":"gear4"}];
+
 
 
 	return {
@@ -31,8 +32,9 @@ apimock=(function(){
 
 })();
 
-/*
-Example of use:
+
+/*Example of use:
+
 var fun=function(list){
 	console.info(list);
 }
