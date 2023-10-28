@@ -9,14 +9,11 @@ h1,h2,label,table{
     font-weight: bold;
 }
 
-button{
-    margin-left: auto;
-}
-
 label{
     display:block;
-    height: 100px;
+    height: 50px;
     color:black;
+    margin-top:50px;
 }
 
 h1{
@@ -31,13 +28,17 @@ h2{
     margin-top: 20px;
 }
 
-input[type="submit"]{
-    height: 40px;
-    margin:10 50%;
-    color: black;
+button{
+    width: 100px;
+}
+
+#button-div{
+    display:flex;
+    justify-content: center;
 }
 
 #table{
+    margin-top: 20px;
     background-color: bisque    ;
 }
 
@@ -53,7 +54,7 @@ form{
 
 
 #myCanvas{
-    background-color: violet;
+    background-color: lightgray;
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;

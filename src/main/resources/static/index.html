@@ -5,31 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="/webjars/jquery/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <script src="js/apimock.js"></script>
-    <script src="js/app.js" id="app"></script>
+    
     <script src="js/apiclient.js"></script>
-    <link rel="stylesheet"
-      href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet"
+      href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />-->
     <h1 id="title">Blueprints</h1>
     <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-        <p id="demo"></p>
-        <form id="author-form">
+        <body onload="app.init()">
+        <form id="author-form" onsubmit="return false">
             <label for="author-input" id="author-label"><input id="author-input" type="text" required placeholder="Enter the author's name">   Author Name</input></label>
-            <h2 >This is the Author</h2>
+            <div id="button-div">
+                <button onclick="app.getBlueprintsAuthor()"> Get Blueprints</button>
+                <button onclick="app.newBlueprint()">New Blueprint</button>
+            </div>
             <h2 id="author"></h2>
-            <button  onclick="app.getBlueprintsAuthor()"> Get blueprints</button>
             <!--<label for="button"><input id="getBlueprints-button" type="button" onclick="app.getBlueprintsByAuthor" value="Get Blueprints"></input></label>-->
             <div id="tableDiv">
                 <table id = "table">
                     <thead>
                         <tr>
                             <th id ="NameHeader">Name</th>
-                            <th id ="NumberOfPointsHeader">Author</th>
+                            <th id ="NumberOfPointsHeader">#Points</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,11 +40,18 @@
                 </table>
             </div>
             <div id="totalPoints-div">
-                <h2>Total Points</h2>
                 <h2 id="totalPoints"></h2>
                 <canvas id="myCanvas"></canvas>
+                <button onclick="app.saveUpdate()">Save/Update</button>
+                <button onclick="app.deleteBlueprint()">Delete</button>
             </div>
         </form>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="js/app.js" id="app"></script>
+        <!--<script src="main.js"></script-->
+            
     </body>
 
 
